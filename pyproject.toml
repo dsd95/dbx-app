@@ -1,0 +1,16 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dbx-app"
+version = "0.1.0"
+description = "Python app for Databricks jobs"
+readme = "README.md"
+requires-python = ">=3.10"
+
+[project.scripts]
+dbx-app = "dbx_app.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dbx_app"]
