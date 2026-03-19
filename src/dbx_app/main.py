@@ -1,5 +1,5 @@
 import argparse
-from datetime import datetime
+from datetime import datetime, UTC
 
 from pyspark.sql import SparkSession
 
@@ -15,7 +15,7 @@ def main():
     table_name = f"demo_app_runs_{args.schema}"
 
     data = [
-        ("dbx-app", args.catalog, args.schema, datetime.utcnow().isoformat(), "ok"),
+        ("dbx-app", args.catalog, args.schema, datetime.now(UTC).isoformat(), "ok"),
     ]
 
     df = spark.createDataFrame(
