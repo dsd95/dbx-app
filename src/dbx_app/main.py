@@ -12,7 +12,7 @@ def main():
 
     spark = SparkSession.builder.getOrCreate()
 
-    table_name = f"{args.catalog}.{args.schema}.demo_app_runs"
+    table_name = f"demo_app_runs_{args.schema}"
 
     data = [
         ("dbx-app", args.catalog, args.schema, datetime.utcnow().isoformat(), "ok"),
@@ -27,8 +27,6 @@ def main():
     print(f"A gravar tabela: {table_name}")
 
     df.show(truncate=False)
-
-    spark.sql(f"CREATE SCHEMA IF NOT EXISTS {args.catalog}.{args.schema}")
 
     (
         df.write
